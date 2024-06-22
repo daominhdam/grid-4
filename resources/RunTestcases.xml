@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Selenium GRID" parallel="methods" thread-count="5">
+
+	<test name="Run on Firefox - Windows">
+		<parameter name="browser" value="firefox" />
+		<parameter name="osName" value="windows" />
+		<parameter name="ipAddress" value="192.168.1.11" />
+		<parameter name="port" value="4444" />
+		<classes>
+			<class name="grid.Grid_4_Demo" />
+		</classes>
+	</test>
+
+	<test name="Run on Chrome - Windows">
+		<parameter name="browser" value="chrome" />
+		<parameter name="osName" value="windows" />
+		<parameter name="ipAddress" value="192.168.1.11" />
+		<parameter name="port" value="4444" />
+		<classes>
+			<class name="grid.Grid_4_Demo" />
+		</classes>
+	</test>
+
+	<test name="Run on Edge - Windows">
+		<parameter name="browser" value="edge" />
+		<parameter name="osName" value="windows" />
+		<parameter name="ipAddress" value="192.168.1.11" />
+		<parameter name="port" value="4444" />
+		<classes>
+			<class name="grid.Grid_4_Demo" />
+		</classes>
+	</test>
+
+	<test name="Run on Firefox - MAC">
+		<parameter name="browser" value="firefox" />
+		<parameter name="osName" value="mac" />
+		<parameter name="ipAddress" value="192.168.1.11" />
+		<parameter name="port" value="4444" />
+		<classes>
+			<class name="grid.Grid_4_Demo" />
+		</classes>
+	</test>
+
+	<test name="Run on Chrome - MAC">
+		<parameter name="browser" value="chrome" />
+		<parameter name="osName" value="mac" />
+		<parameter name="ipAddress" value="192.168.1.11" />
+		<parameter name="port" value="4444" />
+		<classes>
+			<class name="grid.Grid_4_Demo" />
+		</classes>
+	</test>
+
+	<test name="Run on Edge - MAC">
+		<parameter name="browser" value="edge" />
+		<parameter name="osName" value="mac" />
+		<parameter name="ipAddress" value="192.168.1.11" />
+		<parameter name="port" value="4444" />
+		<classes>
+			<class name="grid.Grid_4_Demo" />
+		</classes>
+	</test>
+
+	<test name="Run on Safari - MAC">
+		<parameter name="browser" value="safari" />
+		<parameter name="osName" value="mac" />
+		<parameter name="ipAddress" value="192.168.1.11" />
+		<parameter name="port" value="4444" />
+		<classes>
+			<class name="grid.Grid_4_Demo" />
+		</classes>
+	</test>
+
+</suite>

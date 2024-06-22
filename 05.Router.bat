@@ -1,0 +1,2 @@
+set ProjectPath=%~dp0
+java -jar "%ProjectPath%\libraries\selenium-server-4.21.0.jar" router --sessions http://192.168.1.10:5556 --distributor http://192.168.1.10:5553 --sessionqueue http://192.168.1.10:5559 --port 4444

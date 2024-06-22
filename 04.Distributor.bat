@@ -1,0 +1,2 @@
+set ProjectPath=%~dp0
+java -jar "%ProjectPath%\libraries\selenium-server-4.21.0.jar" distributor --publish-events tcp://192.168.1.10:4442 --subscribe-events tcp://192.168.1.10:4443 --sessions http://192.168.1.10:5556 --sessionqueue http://192.168.1.10:5559 --port 5553 --bind-bus false
