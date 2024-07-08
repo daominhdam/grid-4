@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
@@ -18,35 +19,39 @@ public class BaseTest {
 	String projectFolder = System.getProperty("user.dir");
 	public Platform platform;
 
-	protected WebDriver getBrowserDriver(String browserName, String osName, String ipAddress, String portNumber) {
+	protected WebDriver getBrowserDriver(String browserName, String url, String osName, String ipAddress, String portNumber) {
+		Capabilities capability = null;
 
-		if (osName.contains("windows")) {
+		if (osName.toLowerCase().contains("windows")) {
 			platform = Platform.WINDOWS;
 		} else {
 			platform = Platform.MAC;
 		}
 
-		Capabilities capability = null;
-
 		switch (browserName) {
 		case "firefox":
-			capability = new FirefoxOptions();
+			FirefoxOptions fOptions = new FirefoxOptions();
+			fOptions.setCapability(CapabilityType.PLATFORM_NAME, platform);
+			capability = fOptions;
 			break;
 		case "chrome":
-			capability = new ChromeOptions();
+			ChromeOptions cOptions = new ChromeOptions();
+			cOptions.setCapability(CapabilityType.PLATFORM_NAME, platform);
+			capability = cOptions;
 			break;
 		case "edge":
-			capability = new EdgeOptions();
+			EdgeOptions eOptions = new EdgeOptions();
+			eOptions.setCapability(CapabilityType.PLATFORM_NAME, platform);
+			capability = eOptions;
 			break;
 		case "safari":
-			capability = new SafariOptions();
+			SafariOptions sOptions = new SafariOptions();
+			sOptions.setCapability(CapabilityType.PLATFORM_NAME, platform);
+			capability = sOptions;
 			break;
 		default:
 			throw new RuntimeException("Browser is not valid!");
 		}
-		
-		// Set platform
-		//...
 
 		try {
 			driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/", ipAddress, portNumber)), capability);
@@ -56,7 +61,7 @@ public class BaseTest {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.manage().window().maximize();
-
+		driver.get(url);
 		return driver;
 	}
 
